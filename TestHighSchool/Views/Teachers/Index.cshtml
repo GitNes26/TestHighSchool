@@ -1,0 +1,109 @@
+﻿@model IEnumerable<TestHighSchool.Models.TeacherModel>
+
+@{
+    ViewBag.Title = "Maestros";
+    ViewBag.Single = "Maestro";
+}
+
+<!-- Content Header (Encabezado en el contenido de la pagina) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>
+                    <i class="fa-solid fa-user-tie"></i>&nbsp; @ViewBag.Title
+                    <!-- <em class="fw-ligth text-muted lead text-sm">| </em> -->
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/"><i class="fa-solid fa-house"></i>&nbsp;Inicio</a></li>
+                    <li class="breadcrumb-item">Administración</li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- card -->
+    <div class="card card-outline card-dark shadow">
+        <div class="container-fluid mt-2">
+            <a href="~/Teachers/Create" class="btn btn-success text-uppercase float-end fw-bold" accesskey="a"><i class="fa-solid fa-circle-plus"></i>&nbsp;Agregar @ViewBag.Single (Alt+a)</a>
+
+        </div>
+        <div class="card-body">
+            <!-- tabla -->
+            <div class="table-responsive p-3">
+                <table id="table" class="table table-hover text-center" style="width:100%">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Subject)
+                            </th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.Name</th>
+                                <th>@item.LastName</th>
+                                <th>@item.Tel</th>
+                                <th>@item.Email</th>
+                                <th>@item.Subject</th>
+                                <td>
+                                    <div class="btn-group">
+                                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Ver detalle", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr class="thead-dark">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Subject)
+                            </th>
+                            <th>Acciones</th>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+</section>
